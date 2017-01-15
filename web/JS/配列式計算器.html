@@ -1,0 +1,163 @@
+<html>
+<head>
+<title>逆配列計算器</title>
+<meta charset="utf-8">
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<style type="text/css">
+#app {
+	margin: 100px 0;
+}
+.container input {
+	width: 50px;
+}
+</style>
+</head>
+<body>
+<div id="app">
+	<div class="container">
+	  下の9つのtextboxに配列の要素の数字を入力してください。
+	  <div class="row">
+	    <div class="col-sm-1">
+	      <p> A = </p>
+	    </div>
+	    <div class="col-sm-10">
+		  <input type="text" v-model="matrix[0]">
+		  <input type="text" v-model="matrix[1]">
+		  <input type="text" v-model="matrix[2]">
+		  <br>
+		  <input type="text" v-model="matrix[3]">
+		  <input type="text" v-model="matrix[4]">
+		  <input type="text" v-model="matrix[5]">
+		  <br>
+		  <input type="text" v-model="matrix[6]">
+		  <input type="text" v-model="matrix[7]">
+		  <input type="text" v-model="matrix[8]">
+		</div>
+	  </div>
+	  <br>
+	  <div class="row">
+	    <div class="col-sm-1">
+	      <p> A<sup>t</sup> = </p>
+	    </div>
+	    <div class="col-sm-11">
+		  <table>
+		    <tr>
+		      <td>{{ matrix[0] }}</td><td>{{ matrix[3] }}</td><td>{{ matrix[6] }}</td>
+		    </tr>
+		    <tr>
+		      <td>{{ matrix[1] }}</td><td>{{ matrix[4] }}</td><td>{{ matrix[7] }}</td>
+		    </tr>
+		    <tr>
+		      <td>{{ matrix[2] }}</td><td>{{ matrix[5] }}</td><td>{{ matrix[8] }}</td>
+		    </tr>
+		  </table>
+		</div>
+	  </div>
+	  <br>
+	  <div class="row">
+	    <div class="col-sm-1">
+	      <p> |A| = </p>
+	    </div>
+	    <div class="col-sm-10">
+	    {{ determinant }}
+	    </div>
+  </div>
+</div>
+<!--
+<div id="app-2">
+	<span v-bind:title="message">
+		Hover your mouse over me for a few seconds to see my dynamically bound title!
+    </span>
+</div>
+
+<div id="app-3">
+	  <p v-if="seen">Now you see me</p>
+</div>
+<div id="app-4">
+  <ol>
+		    <li v-for="todo in todos">
+					      {{ todo.text }}
+								    </li>
+										  </ol>
+											</div>
+
+<div id="app-6">
+	  <p>{{ message }}</p>
+		  <input v-model="message">
+</div>
+
+<div id="compute">
+	<input v-model="a">
+	<input v-model="b">
+	<p> {{ add }} </p> 
+</div>
+-->
+<script>
+  var app = new Vue({
+		el: '#app',
+		data: {
+			message: '0',
+			matrix: [0,0,0,0,0,0,0,0,0],
+			det: 0,
+		},
+		computed: {
+		  determinant(){
+		  	this.det = 0;
+		  	this.det += this.matrix[0] * this.matrix[4] * this.matrix[8];
+		  	this.det += this.matrix[1] * this.matrix[5] * this.matrix[6];
+		  	this.det += this.matrix[2] * this.matrix[3] * this.matrix[7];
+		  	this.det -= this.matrix[2] * this.matrix[4] * this.matrix[6];
+		  	this.det -= this.matrix[1] * this.matrix[3] * this.matrix[8];
+		  	this.det -= this.matrix[0] * this.matrix[5] * this.matrix[7];
+
+			return this.det;
+		  },
+		},
+	})
+  /*
+  var app2 = new Vue({
+	  el: '#app-2',
+		  data: {
+		    message: 'You loaded this page on ' + new Date()
+	  }
+  })
+var app3 = new Vue({
+	  el: '#app-3',
+		  data: {
+				    seen: true
+							  }
+})
+var app4 = new Vue({
+	  el: '#app-4',
+		  data: {
+				    todos: [
+							      { text: 'Learn JavaScript' },
+										      { text: 'Learn Vue' },
+													      { text: 'Build something awesome' }
+						    ]
+									  }
+})
+var app6 = new Vue({
+	  el: '#app-6',
+		  data: {
+				    message: 'Hello Vue!'
+							  }
+})
+
+var compute = new Vue({
+	el:'#compute',
+	data: {
+		a: '0',
+		b: '0'
+	},
+	computed: {
+		add: function(){
+			return Number(this.a) + Number(this.b);    
+		}   
+	}
+
+})
+*/
+</script>
+</body>
