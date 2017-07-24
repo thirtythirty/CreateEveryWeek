@@ -1,0 +1,27 @@
+.disable-cell {
+  background-color: gray;
+}
+
+.saturday-cell {
+  background-color: blue;
+}
+
+.sunday-cell {
+  background-color: red;
+}
+
+.public-holiday-cell {
+  background-color: green;
+}
+
+.normal-cell {
+  background-color: silver;
+}
+
+.compensatory-holiday-cell {
+  background-color: orange;
+}
+
+.event-day-cell {
+  background-color: yellow;
+}

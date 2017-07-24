@@ -1,0 +1,38 @@
+<div class="calender-head">
+  <div class="year-num"><%= @month_calender.year %>年</div>
+  <div class="month-num"><%= @month_calender.month %>月</div>
+</div>
+
+<table class="border">
+  <tr>
+    <th>日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th>
+  </tr>
+  <tr>
+    <% @month_calender.days[0].wday_num.times do %>
+      <td class="calender-cell disable-cell"></td>
+    <% end %>
+  <% @month_calender.days.each do |day| %>
+    <td class="calender-cell <%= day.kind %>-cell">
+      <span class="day-num"><%= day.day_num %></span>
+      <ul class="event-name-on-cel">
+        <% day.events.each do |event| %>
+          <li><%= event.name %></li>
+        <% end %>
+      </ul>
+    </td>
+    <% if day.wday_num == 6 %>
+  </tr>
+  <tr>
+    <% end %>
+  <% end %>
+    <% (6 - @month_calender.days[-1].wday_num).times do %>
+      <td class="calender-cell disable-cell"></td>
+    <% end %>
+  </tr>
+</table>
+
+<div class="footer">
+  <a class="last-month-link" href="<%= @last_month_path %>">先月</a>
+  <a class="next-month-link" href="<%= @next_month_path %>">来月</a>
+  <a class="this-month-link" href="<%= @this_month_path %>">今月</a>
+</div>
