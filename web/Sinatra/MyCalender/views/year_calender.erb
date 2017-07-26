@@ -1,0 +1,23 @@
+<div class="calender-head">
+  <table class="calender-head-table">
+    <tr>
+      <th><a class="last-year-link" href="<%= @last_year_path %>">去年</a></th>
+      <th>
+        <span class="era-name"><%= @year_calender.era_name %></span>
+        <span class="year-num"><%= @year_calender.year %>年</span>
+      </th>
+      <th><a class="next-year-link" href="<%= @next_year_path %>">来年</a></th>
+    </tr>
+  </table>
+</div>
+
+<div class="year-calender">
+<% @year_calender.months.each do |month_calender| %>
+  <% @month_calender = month_calender %>
+  <%= erb :index %>
+<% end %>
+</div>
+
+<div class="footer">
+  <a class="this-month-link" href="<%= @this_year_path %>">今年</a>
+</div>

@@ -20,7 +20,23 @@
     <![endif]-->
   </head>
   <body>
+
+  <nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand">マイカレンダー</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="/<%= Date.today.year %>">年カレンダー</a></li>
+            <li><a href="/<%= Date.today.year %>/<%= Date.today.month %>">月カレンダー</a></li>
+            <li><a href="/era/平成">元号カレンダー</a></li>
+        </ul>
+    </div>
+  </nav>
+
+  <div class="container">
     <%= yield %>
+  </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

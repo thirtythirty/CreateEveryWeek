@@ -1,27 +1,67 @@
 .disable-cell {
-  background-color: gray;
+  background-color: #9f9f9f;
 }
 
 .saturday-cell {
-  background-color: blue;
+  background-color: #b5c4ff;
 }
 
 .sunday-cell {
-  background-color: red;
+  background-color: #ffb5b5;
 }
 
 .public-holiday-cell {
-  background-color: green;
+  background-color: #bcffb5;
 }
 
 .normal-cell {
-  background-color: silver;
+  background-color: #ffffff;
 }
 
 .compensatory-holiday-cell {
-  background-color: orange;
+  background-color: #ffe4b5;
 }
 
 .event-day-cell {
-  background-color: yellow;
+  background-color: #fffcb5;
+}
+
+table.month-calender {
+  border-collapse: collapse;
+}
+table.month-calender, .month-calender th, .month-calender td {
+  border: 1px solid black;
+}
+ul.event-name-on-cel {
+  list-style:none;
+}
+.event-name-on-cel li {
+  margin-left: -40px;
+  font-size: 0.8em;
+}
+
+.month-calender, .calender-head-table {
+  width: 100%;
+}
+.month-calender td {
+  vertical-align: top;
+  padding: 8px;
+  margin: 0px;
+  height: 100px;
+}
+.month-calender th {
+  width: 14.28%;
+  text-align: center;
+}
+.month-calender .day-num {
+  font-size: 2em;
+}
+
+.calender-head-table th{
+  text-align: center;
+}
+
+
+.era-name, .year-num, .month-num {
+  font-size: 3em;
 }

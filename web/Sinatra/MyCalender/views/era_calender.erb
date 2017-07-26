@@ -1,0 +1,16 @@
+<div class="calender-head">
+  <table class="calender-head-table">
+    <tr>
+      <th>
+        <span class="era-name"><%= @era_calender.era_name %></span>
+      </th>
+    </tr>
+  </table>
+</div>
+
+<div class="era_calender">
+<% @era_calender.months.each do |month_calender| %>
+  <% @month_calender = month_calender %>
+  <%= erb :index %>
+<% end %>
+</div>

@@ -1,4 +1,4 @@
-require './event.rb'
+require './lib/event.rb'
 
 class Day
   attr_accessor :wday_num, :day_num, :events
@@ -34,10 +34,25 @@ class Day
   end
 
   def is_compensatory_holiday?
-    @events.find {|event| event.type == 'public_holiday' && event.name == "振替休日" }
+    @events.find {|event| event.type == 'public_holiday' && event.name == '振替休日' }
   end
 
   def is_event_day?
     @events.find {|event| event.type == 'event' }
+  end
+
+  def self.getEraName(year, month, day)
+    target_date = Date.new(year, month, day)
+    if(Date.new(1989,1,8) <= target_date)
+      '平成'
+    elsif(Date.new(1926,12,25) <= target_date)
+      '昭和'
+    elsif(Date.new(1912,7,30) <= target_date)
+      '大正'
+    elsif(Date.new(1868,1,25) <= target_date)
+      '明治'
+    else
+      ''
+    end
   end
 end

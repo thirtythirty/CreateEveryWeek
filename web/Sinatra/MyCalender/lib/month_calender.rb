@@ -1,9 +1,9 @@
 require 'date'
-require './day.rb'
-require './event.rb'
+require './lib/day.rb'
+require './lib/event.rb'
 
 class MonthCalender
-  attr_accessor :year, :month, :maxday, :days
+  attr_accessor :year, :month, :maxday, :days, :era_name
 
   def initialize(year, month)
     @year = year.to_i
@@ -15,9 +15,9 @@ class MonthCalender
     @maxday.times do |i|
       @days << Day.new(i+1, (first_wday+i)%7)
     end
+    @era_name = Day.getEraName(@year, @month, 1)
     
     setEvents()
-    p @days
   end
 
   def get_maxday(year, month)
