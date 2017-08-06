@@ -42,6 +42,30 @@ get '/:year/:month' do
   erb :index
 end
 
+get '/every_holiday/:year/:month' do
+  year = params[:year].to_i
+  month = params[:month].to_i
+  @month_calender = MonthCalender.new(year, month)
+
+  @last_month_path = if month != 1
+                       "/#{year}/#{month-1}"
+                     else
+                       "/#{year-1}/12"
+                     end
+  @next_month_path = if month != 12
+                       "/#{year}/#{month+1}"
+                     else
+                      "/#{year+1}/1"
+                     end
+  @this_month_path = "/#{Date.today.year}/#{Date.today.month}"
+
+  @month_calender.days.each do |day|
+    day.setEvent("毎日が日曜日", "public_holiday")
+  end
+
+  erb :index
+end
+
 get '/:year' do
   year = params[:year].to_i
   @year_calender = YearCalender.new(year)
