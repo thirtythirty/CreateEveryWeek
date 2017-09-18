@@ -1,2 +1,27 @@
+[user]
+	name = thirtythirty
+	email = qawsedr443@gmail.com
+
 [alias]
-		p = !git push origin `git rev-parse --abbrev-ref HEAD`
+	gsub = !~/bin/git-gsub
+	p = !git push origin `git rev-parse --abbrev-ref HEAD`
+  st = status
+    # いい感じのグラフでログを表示
+  graph = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
+      # 上の省略形
+  gr = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
+  st = status
+  cm = commit
+      # Untracked filesを表示せず，not stagedと，stagedだけの状態を出力する
+  stt = status -uno
+      # 行ごとの差分じゃなくて，単語レベルでの差分を色付きで表示する
+  difff = diff --word-diff
+  b = branch
+  ba = branch -a
+  co = checkout
+  ffs = flow feature start
+  sp = stash pop
+  ss = stash save
+
+[core]
+	editor = /usr/bin/vim
