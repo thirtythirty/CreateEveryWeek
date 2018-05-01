@@ -1,7 +1,8 @@
-#define BEAT 300   // 音の長さを指定
+#define BEAT 100   // 音の長さを指定
 #define PINNO 11   // 圧電スピーカを接続したピン番号
 #define BUF_NUM 100
-#define SENSOR_NUM 1
+#define SENSOR_NUM 6
+#define HIT_ACCURACY 20
 float light_pre[SENSOR_NUM];
 int sensor_values[SENSOR_NUM][BUF_NUM];
 int count_for_senser_values;
@@ -42,22 +43,28 @@ void loop() {
     sum += sensor_values[sensor_num][i];
   }
   float average = sum/(float)BUF_NUM;
+  int hit_flag = 0;
   
-  if((float)light_senser > (average+3)){
-    float light_diff = light_pre[sensor_num] - light_senser;
+  if((float)light_senser > (average+HIT_ACCURACY)){
+//    float light_diff = light_pre[sensor_num] - light_senser;
 //    if(light_diff < -50){
       tone(PINNO,262,BEAT) ;  // ド
+//      tone(PINNO,500,BEAT) ;  // ド
+
 //    }
 //    digitalWrite(13,HIGH);
+      hit_flag = 1;
   } else {
 //    digitalWrite(13,LOW);
   }
   light_pre[sensor_num] = light_senser;
   // buf value
   sensor_values[sensor_num][count_for_senser_values%BUF_NUM] = light_senser;
-  Serial.print(light_senser);
-  Serial.print("\t");
-  Serial.print(average);
+//  Serial.print(light_senser);
+//  Serial.print("\t");
+//  Serial.print(average);
+//  Serial.print("\t");
+  Serial.print(hit_flag);
   Serial.print("\t");
   }
   if(count_for_senser_values >= 10000){
